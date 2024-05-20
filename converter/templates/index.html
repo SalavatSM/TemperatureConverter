@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Temperature Converter</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.temperature.label_tag }}
+                {{ form.temperature }}
+            </div>
+            <div class="form-group">
+                {{ form.conversion_type.label_tag }}
+                {{ form.conversion_type }}
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+        {% if result is not None %}
+            <div class="alert alert-info mt-3">
+                Result: {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
